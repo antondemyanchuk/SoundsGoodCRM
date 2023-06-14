@@ -1,6 +1,4 @@
-﻿using SoundsGoodCRM.Models.UserModels;
-
-namespace SoundsGoodCRM.Models
+﻿namespace SoundsGoodCRM.DAO.UserModels
 {
     public class User : EntityWithId
     {

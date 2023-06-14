@@ -1,4 +1,4 @@
-﻿namespace SoundsGoodCRM.Models.UserModels
+﻿namespace SoundsGoodCRM.DAO.UserModels
 {
     public class UserAuthorization : EntityWithId
     {

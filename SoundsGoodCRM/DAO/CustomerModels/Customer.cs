@@ -1,7 +1,7 @@
-﻿using SoundsGoodCRM.Models.InstrumentModels;
-using SoundsGoodCRM.Models.OrderModels;
+﻿using SoundsGoodCRM.DAO.InstrumentModels;
+using SoundsGoodCRM.DAO.OrderModels;
 
-namespace SoundsGoodCRM.Models.CustomerModels
+namespace SoundsGoodCRM.DAO.CustomerModels
 {
     public class Customer : EntityWithId
     {

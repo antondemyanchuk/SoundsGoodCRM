@@ -1,12 +1,10 @@
-﻿using DataBaseContext.Models.OrderModels;
-using Microsoft.EntityFrameworkCore;
-using SoundsGoodCRM.Models;
-using SoundsGoodCRM.Models.CustomerModels;
-using SoundsGoodCRM.Models.InstrumentModels;
-using SoundsGoodCRM.Models.OrderModels;
-using SoundsGoodCRM.Models.UserModels;
+﻿using Microsoft.EntityFrameworkCore;
+using SoundsGoodCRM.DAO.CustomerModels;
+using SoundsGoodCRM.DAO.InstrumentModels;
+using SoundsGoodCRM.DAO.OrderModels;
+using SoundsGoodCRM.DAO.UserModels;
 
-namespace SoundsGoodCRM.Logic
+namespace SoundsGoodCRM.DAO
 {
     public class SampleContext : DbContext
     {

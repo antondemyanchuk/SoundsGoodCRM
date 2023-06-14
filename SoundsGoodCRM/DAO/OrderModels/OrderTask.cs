@@ -1,6 +1,4 @@
-﻿using DataBaseContext.Models.OrderModels;
-
-namespace SoundsGoodCRM.Models.OrderModels
+﻿namespace SoundsGoodCRM.DAO.OrderModels
 {
     public class OrderTask : EntityWithId
     {

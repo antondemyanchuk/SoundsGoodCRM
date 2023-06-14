@@ -1,9 +1,8 @@
-﻿using DataBaseContext.Models.OrderModels;
-using SoundsGoodCRM.Models.CustomerModels;
-using SoundsGoodCRM.Models.InstrumentModels;
+﻿using SoundsGoodCRM.DAO.CustomerModels;
+using SoundsGoodCRM.DAO.InstrumentModels;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SoundsGoodCRM.Models.OrderModels
+namespace SoundsGoodCRM.DAO.OrderModels
 {
     public class Order : EntityWithId
     {
@@ -23,7 +22,7 @@ namespace SoundsGoodCRM.Models.OrderModels
         public decimal TotalAmount { get; set; }
 
 
-        public record OrderDto(int Id, string SerialNumber, string Tune, 
+        public record OrderDto(int Id, string SerialNumber, string Tune,
             string Model, string Type, string Brand, string Name, string PhoneNumber);
     }
 }

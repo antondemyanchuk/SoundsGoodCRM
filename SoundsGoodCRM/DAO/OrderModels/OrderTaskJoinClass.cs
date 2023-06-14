@@ -1,6 +1,4 @@
-﻿using SoundsGoodCRM.Models.OrderModels;
-
-namespace DataBaseContext.Models.OrderModels
+﻿namespace SoundsGoodCRM.DAO.OrderModels
 {
     public class OrderTaskJoinClass
     {

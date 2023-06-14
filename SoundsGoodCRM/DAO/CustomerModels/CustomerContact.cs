@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace SoundsGoodCRM.Models.CustomerModels
+namespace SoundsGoodCRM.DAO.CustomerModels
 {
     public class CustomerContact : EntityWithId
     {

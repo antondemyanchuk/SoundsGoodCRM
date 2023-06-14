@@ -1,4 +1,4 @@
-﻿namespace SoundsGoodCRM.Models.InstrumentModels
+﻿namespace SoundsGoodCRM.DAO.InstrumentModels
 {
     public class InstrumentBrand : EntityWithId
     {

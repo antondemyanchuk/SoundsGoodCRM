@@ -1,4 +1,4 @@
-﻿namespace SoundsGoodCRM.Models
+﻿namespace SoundsGoodCRM.DAO
 {
     public class EntityWithId
     {
