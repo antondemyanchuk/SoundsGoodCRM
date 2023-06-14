@@ -32,8 +32,11 @@ body {
         display: none; 
     }
 }
-.navbar-collapse {
-  min-width: 400px;
+.navbar {
+  min-width: 430px;
+}
+.display6 {
+    min-width: 430px;
 }
 .table-striped tbody tr:nth-child(odd) {
     background-color: rgba(100, 149, 260, 0.5);
@@ -41,6 +44,7 @@ body {
 }
 .table-striped {
     border: 1px solid rgba(100, 149, 237, 1);
-    margin-top: 2px
+    margin-top: 2px;
+    min-width: 430px;
 }
 

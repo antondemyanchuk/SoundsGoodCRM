@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Order";
+}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .edit-button {
+        float: right;
+    }
+
+    .block {
+        margin-bottom: 20px;
+    }
+
+    .block-title {
+        font-weight: bold;
+    }
+
+    .total-cost {
+        font-weight: bold;
+    }
+</style>
+
+<div class="block">
+    <h2 class="block-title">Верхний блок</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+        <tr>
+            <th>Brand</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+        <tr>
+            <th>Serial number</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>...</td>
+            <td class="edit-button">Редактировать</td>
+        </tr>
+    </table>
+</div>
+
+<div class="block">
+    <h2 class="block-title">Средний блок</h2>
+    <div>Имя: ...</div>
+    <div>Фамилия: ...</div>
+    <div>Телефон: ...</div>
+    <div>Почта электронная: ...</div>
+</div>
+
+<div class="block">
+    <h2 class="block-title">Следующий блок</h2>
+    <table>
+        <tr>
+            <th>Название роботы</th>
+            <th>Количество</th>
+            <th>Стоимость</th>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        <!-- Дополнительные строки -->
+    </table>
+    <div class="total-cost">Общая стоимость заказа: ...</div>
+</div>
+
+<div class="block">
+    <h2 class="block-title">Почта</h2>
+    <div>Редактировать данные</div>
+    <div>Почтовый оператор: ...</div>
+    <div>Отделение: ...</div>
+    <div>Область: ...</div>
+    <div>Город: ...</div>
+    <div>Стоимость доставки: ...</div>
+</div>
