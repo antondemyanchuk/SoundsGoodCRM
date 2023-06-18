@@ -1,4 +1,5 @@
-﻿window.addEventListener('resize', function () {
+﻿//for name changing if screen width less than 600 
+window.addEventListener('resize', function () {
     var serialNumber = document.querySelectorAll('.serial-number');
     if (window.innerWidth <= 600) {
         serialNumber.forEach(function (element) {
@@ -11,16 +12,32 @@
     }
 });
 
+//to collapse the navbar
 document.addEventListener('click', function (event) {
     var navbar = document.getElementById('navbarSupportedContent');
     var targetElement = event.target;
 
-    // Check if the clicked element is outside the navbar
     if (!navbar.contains(targetElement)) {
-        // Collapse the navbar if it is currently expanded
         if (navbar.classList.contains('show')) {
             var navbarToggler = document.querySelector('.navbar-toggler');
             navbarToggler.click();
         }
     }
+}); 
+
+//to highlight row in the table
+document.addEventListener("DOMContentLoaded", function () {
+    var table = document.getElementById("main-table");
+    var rows = table.getElementsByTagName("tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].addEventListener("mouseover", function () {
+            this.classList.add("highlight");
+        });
+
+        rows[i].addEventListener("mouseout", function () {
+            this.classList.remove("highlight");
+        });
+    }
 });
+

@@ -27,24 +27,44 @@ body {
     margin-bottom: 30px;
     color: cornflowerblue
 }
+
 @media (max-width: 600px) {
     .type-column {
         display: none; 
     }
 }
+
 .navbar {
-  min-width: 430px;
+    min-width: 430px;
+    padding: 0px;
+    margin-bottom: 0px;
 }
+
 .display6 {
     min-width: 430px;
 }
-.table-striped tbody tr:nth-child(odd) {
-    background-color: rgba(100, 149, 260, 0.5);
-    color: black;
-}
+
 .table-striped {
     border: 1px solid rgba(100, 149, 237, 1);
     margin-top: 2px;
     min-width: 430px;
 }
 
+.table-hover tbody tr.highlight:hover td {
+    background-color: rgba(100, 149, 260, 0.3) !important;
+}
+#time-display,
+#date-display {
+    text-align: right;
+    margin-right: 10px;
+}
+@media (max-width: 600px) {
+    #time-display,
+    #date-display {
+        display: none;
+    }
+}
+#logo {
+    margin-left: 20px; 
+    margin-right: 15px; 
+}
