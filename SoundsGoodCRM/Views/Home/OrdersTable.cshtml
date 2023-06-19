@@ -1,5 +1,18 @@
-﻿@{
+﻿@using SoundsGoodCRM.DAO;
+@using SoundsGoodCRM.DTO;
+@inject SampleContext Ctx;
+
+@{
     ViewData["Title"] = "Orders";
+    var orders = Ctx.Orders
+               .Select(o => new OrderDto(
+               o.Id,
+               o.Instrument.SerialNumber,
+               o.Instrument.Model.ModelName,
+               o.Instrument.Model.Type.Type,
+               o.Instrument.Model.Brand.BrandName,
+               $"{o.Customer.FirstName} {o.Customer.LastName}",
+               o.OrderStatuses.OrderByDescending(o => o).FirstOrDefault().Status)).ToList();
 }
 
 <div class="text-center slogan">
@@ -21,43 +34,20 @@
                 <th>Customer</th>
             </tr>
         </thead>
+
         <tbody>
-            <tr>
-                <td>1</td>
-                <td class="type-column">Guitar</td>
-                <td>Fender</td>
-                <td>Stratocaster</td>
-                <td>11111</td>
-                <td>Active</td>
-                <td>John Doe</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td class="type-column">Piano</td>
-                <td>Yamaha</td>
-                <td>Grand</td>
-                <td>qwerty1</td>
-                <td>Inactive</td>
-                <td>Jane Smith</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td class="type-column">Piano</td>
-                <td>Yamaha</td>
-                <td>Grand</td>
-                <td>qwerty1</td>
-                <td>Inactive</td>
-                <td>Jane Smith</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td class="type-column">Guitar</td>
-                <td>Fender</td>
-                <td>Stratocaster</td>
-                <td>11111</td>
-                <td>Active</td>
-                <td>John Doe</td>
-            </tr>
+            @foreach (var dto in orders)
+            {
+                <tr>
+                    <td>@dto.Id</td>
+                    <td class="type-column">@dto.Type</td>
+                    <td>@dto.Brand</td>
+                    <td>@dto.Model</td>
+                    <td>@dto.SerialNumber</td>
+                    <td>@dto.Status</td>
+                    <td>@dto.CustomerName</td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

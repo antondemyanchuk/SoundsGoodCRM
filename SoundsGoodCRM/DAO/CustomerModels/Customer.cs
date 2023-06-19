@@ -1,5 +1,6 @@
 ﻿using SoundsGoodCRM.DAO.InstrumentModels;
 using SoundsGoodCRM.DAO.OrderModels;
+using System.ComponentModel.DataAnnotations;
 
 namespace SoundsGoodCRM.DAO.CustomerModels
 {
@@ -13,5 +14,12 @@ namespace SoundsGoodCRM.DAO.CustomerModels
         public CustomerPostInfo PostInfo { get; set; }
         public List<Instrument> Instruments { get; set; }
         public List<Order> Orders { get; set; }
+        public Customer() { }
+        public Customer(int Id,string firstName, string lastName, int customerContactId)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            CustomerContactsId = customerContactId;
+        }
     }
 }

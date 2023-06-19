@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.Mvc;
+using SoundsGoodCRM.DAO;
+
 namespace SoundsGoodCRM
 {
     public class Program
@@ -6,8 +9,24 @@ namespace SoundsGoodCRM
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+             // needed for localization and validation
+                .AddViewOptions(options =>
+                {
+                    options.HtmlHelperOptions.ClientValidationEnabled = true;
+                    options.HtmlHelperOptions.Html5DateRenderingMode =
+                        Microsoft.AspNetCore.Mvc.Rendering.Html5DateRenderingMode.CurrentCulture;
+                })
+                .AddDataAnnotationsLocalization()
+                .AddMvcLocalization()
+                .Services
+                // needed for localization and validation
+                .AddMvc(options => { options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute()); })
+                .AddJsonOptions(options => { options.JsonSerializerOptions.PropertyNamingPolicy = null; });
+
+
+            //Add DbContext for the dependency injection 
+            builder.Services.AddDbContext<SampleContext>();
 
             var app = builder.Build();
 

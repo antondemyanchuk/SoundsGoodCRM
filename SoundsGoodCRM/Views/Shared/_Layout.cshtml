@@ -30,6 +30,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="OrdersTable">Orders</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateCustomer">Create customer</a>
+                        </li>
                     </ul>
                     <div class="ml-auto">
                         <div id="time-display"></div>
@@ -39,10 +42,8 @@
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container pb-3">
             @RenderBody()
-        </main>
     </div>
 
     <footer class="border-top footer text-muted text-center">
@@ -50,7 +51,7 @@
             &copy; 2023 - SoundsGoodCRM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~js/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
