@@ -15,8 +15,9 @@ namespace SoundsGoodCRM.DAO.CustomerModels
         public List<Instrument> Instruments { get; set; }
         public List<Order> Orders { get; set; }
         public Customer() { }
-        public Customer(int Id,string firstName, string lastName, int customerContactId)
+        public Customer(int id,string firstName, string lastName, int customerContactId)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             CustomerContactsId = customerContactId;

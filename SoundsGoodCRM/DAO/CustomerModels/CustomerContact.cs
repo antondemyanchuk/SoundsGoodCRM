@@ -12,8 +12,9 @@ namespace SoundsGoodCRM.DAO.CustomerModels
         public Customer Customer { get; set; }
 
         public CustomerContact() { }
-        public CustomerContact(int Id,string phoneNumber, string email)
+        public CustomerContact(int id,string phoneNumber, string email)
         {
+            Id = id;
             PhoneNumber = phoneNumber;
             Email = email;
         }
