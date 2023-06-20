@@ -19,8 +19,8 @@ namespace SoundsGoodCRM.DTO
         public string PhoneNumber { get; set; }
 
 
-        [Required(ErrorMessage = "Phone number is required.")]
-        [RegularExpression("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$\r\n",
+        [Required(ErrorMessage = "Email is required.")]
+        [RegularExpression("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
             ErrorMessage = "Please, type correct email")]
         public string Email { get; set; }
     }

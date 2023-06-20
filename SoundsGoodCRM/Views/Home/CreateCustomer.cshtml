@@ -6,8 +6,8 @@
     ViewData["Title"] = "Create Person";
 }
 
-<div class="col-md-6 card p-3 mx-auto">
-    <h2>Create New Customer</h2>
+<div class="col-md-6 card p-3 mx-auto top-margin width-min ">
+    <h2 class="slogan">Create New Customer</h2>
     <form asp-action="CreatePerson" method="post">
         <div class="form-group">
             <label asp-for="FirstName">First Name</label>
@@ -37,6 +37,6 @@
             <input asp-for="Email" class="form-control"></input>
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-        <button type="submit" class="btn btn-primary mt-5">Create</button>
+        <button type="submit" class="btn btn-outline-primary button-top-margin">Create</button>
     </form>
 </div>
