@@ -2,8 +2,12 @@
 
 namespace SoundsGoodCRM.DTO
 {
-    public sealed record CreateCustomerDTO
+    public class UserDTO
     {
+
+        public int CustomerId { get; set; }
+        public int CustomerContactsId { get; set; }
+
         [Required(ErrorMessage = "First Name is required.")]
         [MinLength(3, ErrorMessage = "First Name must be at least 3 characters long.")]
         [StringLength(100, ErrorMessage = "First Name cannot be longer than 100 characters.")]
@@ -23,5 +27,27 @@ namespace SoundsGoodCRM.DTO
         [RegularExpression("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",
             ErrorMessage = "Please, type correct email")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "First Name is required.")]
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public string Permission { get; set; }
+
+        public UserDTO() { }
+
+        public UserDTO(int id, int contactId, string firstName, string lastName, string phoneNumber, string email, string login, string password, string permission)
+        {
+            CustomerId = id;
+            CustomerContactsId = contactId;
+            FirstName = firstName;
+            LastName = lastName;
+            PhoneNumber = phoneNumber;
+            Email = email;
+            Login = login;
+            Password = password;
+            Permission = permission;
+        }
+
     }
 }
+

@@ -8,5 +8,12 @@
         public InstrumentType Type { get; set; }
         public InstrumentBrand Brand { get; set; }
         public List<Instrument> Instuments { get; set; }
+        public InstrumentModel( int id, string modelName, int typeId, int brandId) 
+        {
+            Id = id;
+            ModelName = modelName;
+            TypeId = typeId;
+            BrandId = brandId;
+        }
     }
 }

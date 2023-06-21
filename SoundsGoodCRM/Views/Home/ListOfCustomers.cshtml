@@ -1,0 +1,46 @@
+﻿@model CustomerDTO
+
+@{
+    ViewData["Title"] = "Customers";
+    var customers = Ctx.Customers
+               .Select(c => new CustomerDTO(
+               c.Id,
+               c.CustomerContactsId,
+               c.FirstName, 
+               c.LastName,
+               c.Contact.PhoneNumber,
+               c.Contact.Email)).ToList();
+}
+
+<div class="col-md-8 card p-3 mx-auto top-margin width-min ">
+    <h2 class="slogan text-center">Customers</h2>
+
+    <a class="btn btn-outline-primary new-customer-button" asp-controller="Home" asp-action="CreateCustomer">+ New Customer</a>
+<div>
+    <table id="main-table" class="table table-striped table-bordered table-hover ">
+        <thead>
+            <tr>
+                @Html.HiddenFor(c =>c.CustomerId)
+                <th>Name</th>
+                <th>Phone number</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var dto in customers)
+            {
+                <tr>
+                    <td class="col-md-5">
+                            <a href="@Url.Action("CustomerInfo", "Home", new { id = dto.CustomerId })">
+                            @($"{dto.FirstName} {dto.LastName}")
+                        </a>
+                    </td>
+
+                    <td>@dto.PhoneNumber</td>
+                    <td>@dto.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -4,5 +4,11 @@
     {
         public string Tune { get; set; }
         public List<Instrument> Instruments { get; set; }
+        public InstrumentTuning() { }
+        public InstrumentTuning(InstrumentTuning tuning) 
+        {
+            Id = tuning.Id;
+            Tune = tuning.Tune;
+        }
     }
 }

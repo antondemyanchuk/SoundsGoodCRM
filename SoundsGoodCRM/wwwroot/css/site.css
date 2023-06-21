@@ -77,3 +77,29 @@ body {
 .button-top-margin {
     margin-top: 10px;
 }
+.toast-message {
+    font-weight: bold;
+    color: rgba(100, 149, 237, 1);
+}
+.button-margin {
+    margin-left: 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 80px; 
+    height: 40px
+}
+.new-customer-button {
+    margin-left: px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 150px;
+    height: 40px
+}
+.form-margin {
+    margin-bottom: 10px;
+}
+#main-table tbody tr td a {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}

@@ -23,7 +23,7 @@ document.addEventListener('click', function (event) {
             navbarToggler.click();
         }
     }
-}); 
+});
 
 //to highlight row in the table
 document.addEventListener("DOMContentLoaded", function () {
@@ -41,3 +41,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// Toast notification init
+$(document).ready(function () {
+    $('.toast').toast('show');
+});
+
+//To chose element from the table clicking everywhere 
+$(document).ready(function () {
+    $("#main-table tbody tr").click(function () {
+        window.location = $(this).find("a").attr("href");
+    });
+});

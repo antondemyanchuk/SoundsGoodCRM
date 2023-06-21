@@ -12,6 +12,8 @@
     <script src="~/js/jquery.min.js"></script>
     <script src="~/js/jquery.validate.min.js"></script>
     <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css" 
+        integrity="sha512-9v9Nwrk0O/qlgd7RzlF1BOFcd1cb25eGr3ht8NffhdoJycp3nDyf8iY5w6Aq1e7T53wcbocXaRJxdmcReO0Xfg==" crossorigin="anonymous" />
 
 </head>
 <body>
@@ -36,6 +38,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateCustomer">Create customer</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListOfCustomers">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CreateInstrument">Create Instrument</a>
+                        </li>
                     </ul>
                     <div class="ml-auto">
                         <div id="time-display"></div>
@@ -45,13 +53,13 @@
             </div>
         </nav>
     </header>
-    <div class="container pb-3">
+    <div class="container-fluid pb-3">
             @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted text-center">
         <div class="container">
-            &copy; 2023 - SoundsGoodCRM - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - SoundsGoodCRM - 
         </div>
     </footer>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

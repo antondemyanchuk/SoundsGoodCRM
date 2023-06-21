@@ -13,5 +13,13 @@ namespace SoundsGoodCRM.DAO.InstrumentModels
         public Customer Customer { get; set; }
         public InstrumentTuning Tuning { get; set; }
         public List<Order> Orders { get; set; }
+
+        public Instrument(int customerId, int modelId, int tuneId,string serialNumber)
+        {
+            CustomerId = customerId;
+            ModelId = modelId;  
+            TuneId = tuneId;
+            SerialNumber = serialNumber;
+        }
     }
 }
