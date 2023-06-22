@@ -74,8 +74,8 @@
 			</div>
 			<div class=" col-md-4 form-group form-margin">
 				<label asp-for="Model">Model</label>
-				<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
-				<datalist id="datalistOptions">
+				<input asp-for="Model" class="form-control" list="datalistOptions1" id="DataList1" placeholder="Type to search...">
+				<datalist id="datalistOptions1">
 					@foreach (var models in modelsList)
 					{
 						<option value="@models.ModelName">@models.ModelName</option>
@@ -85,7 +85,7 @@
 			</div>
 			<div class=" col-md-4 form-group form-margin">
 			<label asp-for="Customer">Customer</label>
-			<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+			<input asp-for="Customer" class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
 			<datalist id="datalistOptions">
 			@foreach (var customer in customerList)
 			{

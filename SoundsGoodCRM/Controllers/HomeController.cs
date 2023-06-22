@@ -156,17 +156,19 @@ namespace SoundsGoodCRM.Controllers
 		{
 			//Checking if instrument already exist in db
 			bool instrumentExists = Context.Instruments
-				.Any(i => i.SerialNumber == instrumentDTO.SerialNumber && i.Model.ModelName == instrumentDTO.Model.ModelName);
+				.Any(i => i.SerialNumber == instrumentDTO.SerialNumber && i.Model.ModelName == instrumentDTO.Model);
 			if (instrumentExists)
 			{
 				//Error message calling (alert)
 				ModelState.AddModelError(string.Empty, "Customer with the same name already exists.");
 				return View(instrumentDTO);
 			}
-			
+
+			var modelId = Context.InstrumentModels.FirstOrDefault(m => m.ModelName == instrumentDTO.Model).Id;
+			var tuningId = Context.InstrumentTunings.FirstOrDefault(t => t.Tune == instrumentDTO.Tuning).Id;
 			var newInstrumentId = Context.Instruments.Any() ? Context.Instruments.Max(p => p.Id) + 1 : 1;
 
-			Instrument instrument = new(newInstrumentId, instrumentDTO.Model.Id, instrumentDTO.Tuning.Id, instrumentDTO.SerialNumber);
+			Instrument instrument = new(newInstrumentId, modelId, tuningId, instrumentDTO.SerialNumber);
 
 
 			Context.Instruments.Add(instrument);
@@ -189,11 +191,8 @@ namespace SoundsGoodCRM.Controllers
 		public IActionResult CreateUser(UserDTO userDTO)
 		{
 			//Checking if customer already exist in db
-			bool customerExists = false;
-			if (Context.Users != null) 
-			{
-				customerExists = Context.Users.Any(u => u.FirstName == userDTO.FirstName && u.LastName == userDTO.LastName);
-			}
+			bool customerExists  = Context.Users.Any(u => u.FirstName == userDTO.FirstName && u.LastName == userDTO.LastName);
+			
 			if (customerExists)
 			{
 				//Error message calling (alert)
@@ -208,17 +207,13 @@ namespace SoundsGoodCRM.Controllers
 				return View(userDTO);
 			}
 			var newContactId = Context.UserContacts.Any() ? Context.UserContacts.Max(u => u.Id) + 1 : 1;
-			int newUserId = 0;
-			if (Context.Users == null)
-			{
-				newUserId = 1;
-			}
-			else newUserId = Context.Users.Max(u => u.Id) + 1;
+			int newUserId = Context.Users.Any() ? Context.Users.Max(u => u.Id) + 1 : 1;
 			var newUserAuthId = Context.UsersAuthorization.Any() ? Context.UsersAuthorization.Max(u => u.Id) + 1 : 1;
+			var userPermissionId = Context.UserPermissions.FirstOrDefault(p => p.Permission == userDTO.Permission).Id;
 
 			UserAuthorization auth = new (newUserAuthId, userDTO.Login, userDTO.Password);
 			UserContact contact = new(newContactId, userDTO.PhoneNumber, userDTO.Email);
-			User user = new (newUserId,userDTO.FirstName, userDTO.LastName,newContactId, userDTO.Permission.Id, newUserAuthId);
+			User user = new (newUserId,userDTO.FirstName, userDTO.LastName,newContactId, userPermissionId, newUserAuthId);
 
 			Context.UsersAuthorization.Add(auth);
 			Context.UserContacts.Add(contact);
@@ -226,7 +221,7 @@ namespace SoundsGoodCRM.Controllers
 			Context.SaveChanges();
 
 			//Toasts notifications
-			TempData["ToastMessage"] = "Customer was created successfully!";
+			TempData["ToastMessage"] = "New user was created successfully!";
 
 			return RedirectToAction("ListOfUsers");
 		}
@@ -257,5 +252,9 @@ namespace SoundsGoodCRM.Controllers
 
 			return View(user);
 		}
+
+		[Route("[controller]/[action]")]
+		public IActionResult ListOfUsers() => View();
 	}
+
 }

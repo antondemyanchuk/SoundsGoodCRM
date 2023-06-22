@@ -46,10 +46,18 @@ namespace SoundsGoodCRM.DTO
 
 		[Required(ErrorMessage = "Permission is required.")]
 
-		public UserPermission Permission { get; set; }
+		public string Permission { get; set; }
 
 		public UserDTO() { }
-
+		public UserDTO(int id, string firstName, string lastName, string phoneNumber, string email, string permission)
+		{
+			Id = id;
+			FirstName = firstName;
+			LastName = lastName;
+			PhoneNumber = phoneNumber;
+			Email = email;
+			Permission = permission;
+		}
 		public UserDTO(int id, string firstName, string lastName, string phoneNumber, string email, string login, string password, string permission)
 		{
 			FirstName = firstName;

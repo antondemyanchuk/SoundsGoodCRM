@@ -8,7 +8,7 @@ namespace SoundsGoodCRM.DAO
 {
     public class SampleContext : DbContext
     {
-        public DbSet<User> Users;
+        public DbSet<User> Users { get; set; }
         public DbSet<UserAuthorization> UsersAuthorization { get; set; }
         public DbSet<UserContact> UserContacts { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
