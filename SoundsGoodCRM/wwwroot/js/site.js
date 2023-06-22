@@ -52,3 +52,17 @@ $(document).ready(function () {
         window.location = $(this).find("a").attr("href");
     });
 });
+
+// To check password, is it equal
+$(document).ready(function () {
+    $('#confirmPassword').on('input', function () {
+        var password = $('#password').val();
+        var confirmPassword = $(this).val();
+
+        if (password !== confirmPassword) {
+            $(this).get(0).setCustomValidity("Passwords do not match.");
+        } else {
+            $(this).get(0).setCustomValidity("");
+        }
+    });
+});

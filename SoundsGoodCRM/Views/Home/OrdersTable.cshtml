@@ -28,7 +28,7 @@
 				<th>Model</th>
 				<th class="serial-number">Serial number</th>
 				<th>Status</th>
-				<th>Customer</th>
+				<th class="col-md-3">Customer</th>
 			</tr>
 		</thead>
 
@@ -36,7 +36,10 @@
 			@foreach (var dto in orders)
 			{
 				<tr>
-					<td>@dto.Id</td>
+					<td>
+						<a href="@Url.Action("OrderInfo", "Home", new { id = dto.Id })">
+							@dto.Id
+					</td>
 					<td class="type-column">@dto.Type</td>
 					<td>@dto.Brand</td>
 					<td>@dto.Model</td>

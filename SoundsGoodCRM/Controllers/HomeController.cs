@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SoundsGoodCRM.DAO;
 using SoundsGoodCRM.DAO.CustomerModels;
 using SoundsGoodCRM.DAO.InstrumentModels;
+using SoundsGoodCRM.DAO.UserModels;
 using SoundsGoodCRM.DTO;
 using SoundsGoodCRM.Models;
 using System;
@@ -67,7 +68,7 @@ namespace SoundsGoodCRM.Controllers
 			//Toasts notifications
 			TempData["ToastMessage"] = "Customer was created successfully!";
 
-			return RedirectToAction("OrdersTable");
+			return RedirectToAction("ListOfCustomers");
 		}
 
 
@@ -177,5 +178,84 @@ namespace SoundsGoodCRM.Controllers
 			return RedirectToAction("OrdersTable");
 		}
 
+		[Route("[controller]/[action]")]
+		public IActionResult ListOfInstruments() => View();
+
+		[Route("[controller]/[action]")]
+		public IActionResult CreateUser() => View();
+
+		[HttpPost]
+		[Route("[controller]/[action]")]
+		public IActionResult CreateUser(UserDTO userDTO)
+		{
+			//Checking if customer already exist in db
+			bool customerExists = false;
+			if (Context.Users != null) 
+			{
+				customerExists = Context.Users.Any(u => u.FirstName == userDTO.FirstName && u.LastName == userDTO.LastName);
+			}
+			if (customerExists)
+			{
+				//Error message calling (alert)
+				ModelState.AddModelError(string.Empty, "Customer with the same name already exists.");
+				return View(userDTO);
+			}
+			bool contactsExist = Context.UserContacts
+				.Any(u => u.PhoneNumber == userDTO.PhoneNumber || u.Email == userDTO.Email);
+			if (contactsExist)
+			{
+				ModelState.AddModelError(string.Empty, "Customer with the same phone number or email already exists.");
+				return View(userDTO);
+			}
+			var newContactId = Context.UserContacts.Any() ? Context.UserContacts.Max(u => u.Id) + 1 : 1;
+			int newUserId = 0;
+			if (Context.Users == null)
+			{
+				newUserId = 1;
+			}
+			else newUserId = Context.Users.Max(u => u.Id) + 1;
+			var newUserAuthId = Context.UsersAuthorization.Any() ? Context.UsersAuthorization.Max(u => u.Id) + 1 : 1;
+
+			UserAuthorization auth = new (newUserAuthId, userDTO.Login, userDTO.Password);
+			UserContact contact = new(newContactId, userDTO.PhoneNumber, userDTO.Email);
+			User user = new (newUserId,userDTO.FirstName, userDTO.LastName,newContactId, userDTO.Permission.Id, newUserAuthId);
+
+			Context.UsersAuthorization.Add(auth);
+			Context.UserContacts.Add(contact);
+			Context.Users.Add(user);
+			Context.SaveChanges();
+
+			//Toasts notifications
+			TempData["ToastMessage"] = "Customer was created successfully!";
+
+			return RedirectToAction("ListOfUsers");
+		}
+
+		[Route("[controller]/[action]")]
+		public IActionResult UserInfo(int id)
+		{
+
+			var user = Context.Users
+			  .Where(u => u.Id == id)
+			  .Select(u => new UserDTO(
+				  u.Id,
+				  u.UserContactsId,
+				  u.UserAuthorizationId,
+				  u.FirstName,
+				  u.LastName,
+				  u.UserContact.PhoneNumber,
+				  u.UserContact.Email,
+				  u.UserAuthorization.Login,
+				  u.UserAuthorization.Password,
+				  u.UserPermission.Permission))
+			  .FirstOrDefault();
+
+			if (user == null)
+			{
+				return NotFound();
+			}
+
+			return View(user);
+		}
 	}
 }

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SoundsGoodCRM.DAO;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace SoundsGoodCRM
 {
@@ -9,9 +10,15 @@ namespace SoundsGoodCRM
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllersWithViews()
-             // needed for localization and validation
-                .AddViewOptions(options =>
+			// add authentication
+			builder.Services.AddAuthentication(options => options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(o => o.LoginPath = "/Home/Login");
+
+
+			builder.Services.AddControllersWithViews()
+                
+				// needed for localization and validation
+				.AddViewOptions(options =>
                 {
                     options.HtmlHelperOptions.ClientValidationEnabled = true;
                     options.HtmlHelperOptions.Html5DateRenderingMode =
@@ -43,11 +50,13 @@ namespace SoundsGoodCRM
 
             app.UseRouting();
 
+			// user authentication and authorization
+			app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=OrdersTable}/{id?}");
 
             app.Run();
         }

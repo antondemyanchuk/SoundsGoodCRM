@@ -1,13 +1,14 @@
-﻿@model CustomerDTO
+﻿@model UserDTO
 
 @{
-    ViewData["Title"] = "Create Customer";
+    ViewData["Title"] = "Create User";
+    var permissionsList = Ctx.UserPermissions.OrderBy(u => u).ToList();
 }
 
-<div class="col-md-6 card p-3 mx-auto top-margin width-min ">
-    <h2 class="slogan">Create New Customer</h2>
+<div class="col-md-8 card p-3 mx-auto top-margin width-min">
+    <h2 class="slogan">Create new user</h2>
 
-    @*Alert notification if customer already exist*@
+    @*Alert notification if user already exists*@
     @if (!ViewData.ModelState.IsValid)
     {
         <div class="alert alert-danger">
@@ -21,35 +22,57 @@
         </div>
     }
 
-    <form asp-action="CreateCustomer" method="post">
-        <div class="form-group">
-            <label asp-for="FirstName">First Name</label>
-            <input asp-for="FirstName" class="form-control" />
-            <span asp-validation-for="FirstName" class="text-danger"></span>
+    <form asp-action="CreateUser" method="post">
+        <div class="form-group row">
+            <div class="col-md-6 form-group form-margin">
+                <label asp-for="FirstName">First Name</label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="col-md-6 form-group form-margin">
+                <label asp-for="LastName">Last Name</label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="col-md-5 form-group form-margin">
+                <label asp-for="PhoneNumber">Phone Number</label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="col-md-7 form-group form-margin">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group form-margin">
+                <label asp-for="Login">Login</label>
+                <input asp-for="Login" class="form-control" />
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group form-margin">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" id="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group form-margin">
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <input asp-for="ConfirmPassword" id="confirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="col-md-4 form-group form-margin">
+                <label asp-for="Permission">Permission</label>
+                <select asp-for="Permission" class="form-control">
+                    <option value="">Select permission</option>
+                    @foreach (var permission in permissionsList)
+                    {
+                        <option value="@permission.Permission">@permission.Permission</option>
+                    }
+                </select>
+                <span asp-validation-for="Permission" class="text-danger"></span>
+            </div>
+            <div class="col-md-12 form-group form-margin">
+                <button type="submit" class="btn btn-outline-primary button-top-margin button-margin">Create</button>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="LastName">Last Name</label>
-            <input asp-for="LastName" class="form-control" />
-            <span asp-validation-for="LastName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="PhoneNumber">Phone Number</label>
-            <input asp-for="PhoneNumber" class="form-control" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-        </div>
-        @*        <div class="form-group">
-        <label asp-for="Gender">Gender</label>
-        <select asp-for="Gender" class="form-control">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        </select>
-        <span asp-validation-for="Gender" class="text-danger"></span>
-        </div>*@
-        <div class="form-group">
-            <label asp-for="Email">Email</label>
-            <input asp-for="Email" class="form-control"></input>
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-outline-primary button-top-margin">Create</button>
     </form>
 </div>
