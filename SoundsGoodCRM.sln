@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM", "SoundsGoodCRM\SoundsGoodCRM.csproj", "{0440FBFC-4EAA-449E-86E7-8980518B8895}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM", "SoundsGoodCRM\SoundsGoodCRM.csproj", "{0440FBFC-4EAA-449E-86E7-8980518B8895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Tests", "SoundsGoodCRM.IntegrationTests\SoundsGoodCRM.Tests.csproj", "{F95E4CBB-9037-489D-9851-6247553D3BFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0440FBFC-4EAA-449E-86E7-8980518B8895}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0440FBFC-4EAA-449E-86E7-8980518B8895}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0440FBFC-4EAA-449E-86E7-8980518B8895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F95E4CBB-9037-489D-9851-6247553D3BFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F95E4CBB-9037-489D-9851-6247553D3BFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F95E4CBB-9037-489D-9851-6247553D3BFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F95E4CBB-9037-489D-9851-6247553D3BFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

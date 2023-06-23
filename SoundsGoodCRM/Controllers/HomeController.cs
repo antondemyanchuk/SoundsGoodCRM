@@ -12,6 +12,8 @@ using SoundsGoodCRM.Models;
 
 using System.Diagnostics;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace SoundsGoodCRM.Controllers
 {
@@ -35,6 +37,7 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult CreateCustomer() => View();
 
 		[HttpPost]
@@ -72,10 +75,11 @@ namespace SoundsGoodCRM.Controllers
 			return RedirectToAction("ListOfCustomers");
 		}
 
+		[Authorize(Roles = "Admin, Owner")]
 		[Route("[controller]/[action]")]
 		public IActionResult ListOfCustomers() => View();
 
-
+		[Authorize(Roles = "Admin, Owner")]
 		[Route("[controller]/[action]")]
 		public IActionResult CustomerInfo(int id)
 		{
@@ -99,6 +103,7 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult EditCustomer(int id)
 		{
 			var customer = Context.Customers
@@ -144,6 +149,7 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Owner")]
 		public IActionResult CreateUser() => View();
 
 		[HttpPost]
@@ -193,6 +199,7 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Owner")]
 		public IActionResult UserInfo(int id)
 		{
 			var user = Context.Users
@@ -219,6 +226,7 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Owner")]
 		public IActionResult EditUser(int id)
 		{
 			var user = Context.Users
@@ -274,10 +282,12 @@ namespace SoundsGoodCRM.Controllers
 			return RedirectToAction("UserInfo", new { id = userDTO.Id });
 		}
 
+		[Authorize(Roles = "Owner")]
 		[Route("[controller]/[action]")]
 		public IActionResult ListOfUsers() => View();
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult CreateInstrument() => View();
 
 		[HttpPost]
@@ -316,9 +326,11 @@ namespace SoundsGoodCRM.Controllers
 		}
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult ListOfInstruments() => View();
 
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult InstrumentInfo(int id)
 		{
 			var instrument = Context.Instruments
@@ -347,6 +359,7 @@ namespace SoundsGoodCRM.Controllers
 			return View(instrument);
 		}
 		[Route("[controller]/[action]")]
+		[Authorize(Roles = "Admin, Owner")]
 		public IActionResult EditInstrument(int id)
 		{
 			var instrument = Context.Instruments
