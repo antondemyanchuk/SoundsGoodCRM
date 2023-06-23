@@ -4,7 +4,7 @@ namespace SoundsGoodCRM.DTO
 {
 	public record OrderDto
 	{
-		public int Id { get; }
+		public int Id { get; set; }
 		public int CustomerId { get; set; }
 		public int InstrumentId { get; set; }
 		[Required(ErrorMessage = "Serial number is required.")]

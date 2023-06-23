@@ -70,11 +70,6 @@ namespace SoundsGoodCRM.DAO
                 .WithMany(t => t.Instruments)
                 .HasForeignKey(i => i.TuneId);
 
-            modelBuilder.Entity<Order>()
-                .HasOne(o => o.Instrument)
-                .WithMany(i => i.Orders)
-                .HasForeignKey(o => o.InstrumentId);
-
             modelBuilder.Entity<User>()
                 .HasOne(u => u.UserContact)
                 .WithOne(c => c.User)

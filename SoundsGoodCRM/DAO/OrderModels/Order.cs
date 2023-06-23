@@ -10,8 +10,8 @@ namespace SoundsGoodCRM.DAO.OrderModels
 		public int InstrumentId { get; set; }
 		public Customer Customer { get; set; }
 		public Instrument Instrument { get; set; }
-		public string DateBeginning { get; set; }
-		public string DateEnding { get; set; }
+		public string? DateBeginning { get; set; }
+		public string? DateEnding { get; set; }
 		public bool IsActive { get; set; }
 		public List<OrderTask> OrderTasks { get; set; }
 		public List<OrderStatus> OrderStatuses { get; set; }

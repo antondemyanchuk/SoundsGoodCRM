@@ -1,0 +1,109 @@
+﻿@model OrderDto;
+
+@{
+	ViewData["Title"] = "Create Order";
+
+	var serialNumberList = Ctx.Instruments.Select(i => i.SerialNumber).ToList();
+	var typeList = Ctx.InstrumentTypes.Select(i => i.Type).ToList();
+	var brandList = Ctx.InstrumentBrands.Select(i => i.BrandName).ToList();
+	var modelsList = Ctx.InstrumentModels.Select(i => i.ModelName).ToList();
+	var tuningList = Ctx.InstrumentTunings.Select(i => i.Tune).ToList();
+	var customerNameList = Ctx.Customers.Select(c => $"{c.FirstName} {c.LastName}").ToList();
+	var customerContacts = Ctx.CustomerContacts.Select(c => c.PhoneNumber).ToList();
+	var statusList = Ctx.OrderStatuses.Select(s => s.Status).ToList();
+}
+
+<div class="col-md-8 card p-3 mx-auto top-margin width-min">
+	<h2 class="slogan">Create new order</h2>
+
+
+	<form asp-action="EditOrder" method="post">
+		<div class="form-group row">
+			@Html.HiddenFor(o => o.Id)
+			@Html.HiddenFor(o => o.CustomerId)
+			@Html.HiddenFor(o => o.InstrumentId)
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="SerialNumber">Serial number</label>
+				<input asp-for="SerialNumber" class="form-control" list="datalistOptions2" id="exampleDataList2" placeholder="Type to search...">
+				<datalist id="datalistOptions2">
+					@foreach (var number in serialNumberList)
+					{
+						<option value="@number"></option>
+					}
+				</datalist>
+				<span asp-validation-for="SerialNumber" class="text-danger"></span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="Type">Type</label>
+				<select asp-for="Type" class="form-control">
+					<option value="">Select type</option>
+					@foreach (var types in typeList)
+					{
+						<option value="@types">@types</option>
+					}
+				</select>
+				<span asp-validation-for="Type" class="text-danger"></span>
+			</div>
+			<div class="col-md-4 form-group form-margin">
+				<label asp-for="Brand">Brand</label>
+				<select asp-for="Brand" class="form-control">
+					<option value="">Select brand</option>
+					@foreach (var brand in brandList)
+					{
+						<option value="@brand">@brand</option>
+					}
+				</select>
+				<span asp-validation-for="Brand" class="text-danger"></span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="Model">Model</label>
+				<input asp-for="Model" class="form-control" list="datalistOptions1" id="DataList1" placeholder="Type to search...">
+				<datalist id="datalistOptions1">
+					@foreach (var models in modelsList)
+					{
+						<option value="@models">@models</option>
+					}
+				</datalist>
+				<span asp-validation-for="Model" class="text-danger"></span>
+			</div>
+			<div class="col-md-4 form-group form-margin">
+				<label asp-for="Tuning">Tune</label>
+				<select asp-for="Tuning" class="form-control">
+					<option value="">Select tuning</option>
+					@foreach (var tune in tuningList)
+					{
+						<option value="@tune">@tune</option>
+					}
+				</select>
+				<span asp-validation-for="Tuning" class="text-danger"></span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="CustomerName">Customer</label>
+				<input asp-for="CustomerName" class="form-control" list="datalistOptions3" id="exampleDataList3" placeholder="Type to search...">
+				<datalist id="datalistOptions3">
+					@foreach (var customer in customerNameList)
+					{
+						<option value="@customer"></option>
+					}
+				</datalist>
+				<span asp-validation-for="CustomerName" class="text-danger"></span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="CustomerPhone">Phone number</label>
+				<input asp-for="CustomerPhone" class="form-control" list="datalistOptions4" id="exampleDataList4" placeholder="Type to search...">
+				<datalist id="datalistOptions4">
+					@foreach (var phoneNumber in customerContacts)
+					{
+						<option value="@phoneNumber"></option>
+					}
+				</datalist>
+				<span asp-validation-for="CustomerPhone" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Description">Description</label>
+				<textarea asp-for="Description" class="form-control"></textarea>
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+			<button type="submit" class="btn btn-outline-primary button-top-margin button-margin">Save</button>
+	</form>
+</div>
