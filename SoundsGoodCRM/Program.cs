@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SoundsGoodCRM.DAO;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 
 namespace SoundsGoodCRM
 {
@@ -33,7 +34,8 @@ namespace SoundsGoodCRM
 
 
 			//Add DbContext for the dependency injection 
-			builder.Services.AddDbContext<SampleContext>();
+			builder.Services.AddDbContext<SampleContext>(o => o.UseSqlServer(builder.Configuration
+				.GetConnectionString("DefaulConnection")));
 
 			var app = builder.Build();
 
@@ -56,7 +58,7 @@ namespace SoundsGoodCRM
 
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Home}/{action=ListOfOrders}/{id?}");
+				pattern: "{controller=Home}/{action=Login}/{id?}");
 
 			app.Run();
 		}

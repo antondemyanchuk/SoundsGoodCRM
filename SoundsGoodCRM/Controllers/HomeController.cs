@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SoundsGoodCRM.DAO;
 using SoundsGoodCRM.DAO.CustomerModels;
@@ -9,7 +11,7 @@ using SoundsGoodCRM.DTO;
 using SoundsGoodCRM.Models;
 
 using System.Diagnostics;
-
+using System.Security.Claims;
 
 namespace SoundsGoodCRM.Controllers
 {
@@ -175,7 +177,7 @@ namespace SoundsGoodCRM.Controllers
 			var newUserAuthId = Context.UsersAuthorization.Any() ? Context.UsersAuthorization.Max(u => u.Id) + 1 : 1;
 			var userPermissionId = Context.UserPermissions.FirstOrDefault(p => p.Permission == userDTO.Permission).Id;
 
-			UserAuthorization auth = new(newUserAuthId, userDTO.Login, userDTO.Password);
+			UserAuthorization auth = new(newUserAuthId, userDTO.Login, PasswordEncryption.HashPassword(userDTO.Password));
 			UserContact contact = new(newContactId, userDTO.PhoneNumber, userDTO.Email);
 			User user = new(newUserId, userDTO.FirstName, userDTO.LastName, newContactId, userPermissionId, newUserAuthId);
 
@@ -258,7 +260,7 @@ namespace SoundsGoodCRM.Controllers
 
 			var dbUserAuth = Context.UsersAuthorization.Find(userDTO.UserAuthorizationId);
 			dbUserAuth.Login = userDTO.Login;
-			dbUserAuth.Password = userDTO.Password;
+			dbUserAuth.Password = PasswordEncryption.HashPassword(userDTO.Password);
 
 			var dbUserContact = Context.UserContacts.Find(userDTO.UserContactsId);
 			dbUserContact.PhoneNumber = userDTO.PhoneNumber;
@@ -410,7 +412,26 @@ namespace SoundsGoodCRM.Controllers
 			var customerFullName = orderDto.CustomerName.Split(' ');
 			var customerFirstName = customerFullName[0];
 			var customerLastName = customerFullName[1];
+			//Checking if customer already exist in db
+			bool customerExists = Context.Customers
+				.Any(c => c.FirstName == customerFirstName && c.LastName == customerLastName);
+			if (!customerExists)
+			{
+				//Error message calling (alert)
+				ModelState.AddModelError(string.Empty, "No customer found. Add new customer first");
+				return View(orderDto);
+			}
 			var customerId = Context.Customers.FirstOrDefault(c => c.FirstName == customerFirstName && c.LastName == customerLastName).Id;
+			
+			//Checking if instrument already exist in db
+			bool instrumentExists = Context.Instruments
+				.Any(i => i.SerialNumber == orderDto.SerialNumber );
+			if (!instrumentExists)
+			{
+				//Error message calling (alert)
+				ModelState.AddModelError(string.Empty, "No instrument found. Create instrument first");
+				return View(orderDto);
+			}
 
 			var instrumentId = Context.Instruments.FirstOrDefault(i => i.SerialNumber == orderDto.SerialNumber).Id;
 
@@ -510,6 +531,40 @@ namespace SoundsGoodCRM.Controllers
 
 			return RedirectToAction("OrderInfo", new { id = orderDto.Id });
 		}
+		public IActionResult Login() => View();
+
+		[HttpPost]
+		public async Task<IActionResult> Login(UserAuthDTO uaDto)
+		{
+			var hashPass = PasswordEncryption.HashPassword(uaDto.Password);
+			//Get auth data
+			var dbUserAuthData = await Context.UsersAuthorization.FirstOrDefaultAsync(a =>
+				a.Login == uaDto.Login && a.Password == hashPass);
+			if (dbUserAuthData == null) return RedirectToAction("Login");
+
+			//Get user data
+			var dbUser = await Context.Users.FirstOrDefaultAsync(u => u.UserAuthorizationId == dbUserAuthData.Id);
+
+			//Get user permission
+			var dbUserPermission = await Context.UserPermissions.FirstOrDefaultAsync(p => p.Id == dbUser.UserPermissionsId);
+
+			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+				new ClaimsPrincipal(new ClaimsIdentity(
+					new List<Claim>
+					{
+					new(ClaimTypes.Name, dbUserAuthData.Login),
+					new(ClaimTypes.Role, dbUserPermission.Permission)
+					}, CookieAuthenticationDefaults.AuthenticationScheme)));
+
+			if (!string.IsNullOrWhiteSpace(uaDto.ReturnUrl) && Url.IsLocalUrl(uaDto.ReturnUrl))
+				return Redirect(uaDto.ReturnUrl);
+			return RedirectToAction("ListOfOrders");
+		}
+		public async Task<IActionResult> Logout()
+		{
+			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			return RedirectToAction("Login");
+		}
 	}
 
-}
+} 

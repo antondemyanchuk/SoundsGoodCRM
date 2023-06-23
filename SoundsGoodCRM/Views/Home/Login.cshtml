@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model UserAuthDTO
+
+@{
+	ViewData["Title"] = "Login";
+}
+<div class="col-md-6 card p-3 mx-auto top-margin width-min">
+	<form asp-controller="Home" asp-action="Login" class="text-center">
+		@Html.HiddenFor(a => a.ReturnUrl)
+		<div class="form-group row justify-content-center align-items-center">
+			<div class="col-md-8 form-group form-margin">
+				<label class="form-label">Login</label>
+				<input asp-for="Login" class="form-control" />
+			</div>
+			<div class="col-md-8 form-group form-margin">
+				<label class="form-label">Password</label>
+				<input asp-for="Password" class="form-control" type="password" />
+			</div>
+			<div class="col-md-8 d-grid gap-2">
+				<button type="submit" class="btn btn-outline-primary button-top-margin button-margin mx-auto">Login</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+

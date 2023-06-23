@@ -26,10 +26,7 @@ namespace SoundsGoodCRM.DAO
         public DbSet<CustomerPostInfo> CustomerPostInfos { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SoundsGood;Integrated Security=True;");
-        }
+        public SampleContext(DbContextOptions<SampleContext> options) : base(options) { }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
