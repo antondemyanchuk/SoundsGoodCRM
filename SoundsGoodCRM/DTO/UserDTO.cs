@@ -32,17 +32,12 @@ namespace SoundsGoodCRM.DTO
 
 		[Required(ErrorMessage = "Login is required.")]
 		public string Login { get; set; }
-		//[Required(ErrorMessage = "Password is required.")]
-		//[MinLength(8, ErrorMessage = "Password must be at least 8 characters long.")]
-		//[RegularExpression("^(?=.*[A-Z])(?=.*[\\p{P}\\p{S}]).+$",
-		//	ErrorMessage = "At least one uppercase letter and one spec symbol required ")]
-		public string Password { get; set; }
 
-		//[Required(ErrorMessage = "Password is required.")]
-		//[MinLength(8, ErrorMessage = "Password must be at least 8 characters long.")]
-		//[RegularExpression("(?=.*[A-Z])(?=.*[\\p{P}\\p{S}]).+",
-		//	ErrorMessage = "At least one uppercase letter and one spec symbol required ")]
-		public string ConfirmPassword { get; set; }
+		[Required(ErrorMessage = "Password is required.")]
+		[MinLength(8, ErrorMessage = "Password must be at least 8 characters long.")]
+		[RegularExpression("^(?=.*[A-Z])(?=.*[!@#$%^&*]).+$",
+			ErrorMessage = "At least one uppercase letter and one spec symbol required ")]
+		public string Password { get; set; }
 
 		[Required(ErrorMessage = "Permission is required.")]
 
@@ -79,7 +74,7 @@ namespace SoundsGoodCRM.DTO
 			Email = email;
 			Login = login;
 			Password = password;
-
+			Permission = permission;
 		}
 	}
 }

@@ -1,48 +1,57 @@
-﻿@model UserDTO
+﻿@model OrderDto
 
 @{
-	ViewData["Title"] = "Users";
-	var users = Ctx.Users
-						.Select(u => new UserDTO(
-						u.Id,
-						u.FirstName,
-						u.LastName,
-						u.UserContact.PhoneNumber,
-						u.UserContact.Email,
-						u.UserPermission.Permission)).ToList();
+	ViewData["Title"] = "Orders";
+	var orders = Ctx.Orders
+						.Select(o => new OrderDto(
+							o.Id,
+							o.Customer.Id,
+							o.Instrument.Id,
+							o.Instrument.SerialNumber,
+							o.Instrument.Model.Type.Type,
+							o.Instrument.Model.Brand.BrandName,
+							o.Instrument.Model.ModelName,
+							o.Instrument.Tuning.Tune,
+							$"{o.Customer.FirstName} {o.Customer.LastName}",
+							o.Customer.Contact.PhoneNumber,
+							o.Description)).ToList();
 }
 
 <div class="col-md-8 card p-3 mx-auto top-margin width-min ">
-	<h2 class="slogan text-center">Users</h2>
+	<h2 class="slogan text-center">Orders</h2>
 
-	<a class="btn btn-outline-primary new-customer-button" asp-controller="Home" asp-action="CreateUser">+ New User</a>
+	<a class="btn btn-outline-primary new-instrument-button" asp-controller="Home" asp-action="CreateOrder">+ New Order</a>
 	<div>
 		<table id="main-table" class="table table-striped table-bordered table-hover ">
 			<thead>
 				<tr>
-					@Html.HiddenFor(u =>u.Id)
-					@Html.HiddenFor(u =>u.UserContactsId)
-					@Html.HiddenFor(u =>u.UserAuthorizationId)
-					<th>Name</th>
-					<th>Phone number</th>
-					<th>Email</th>
-					<th>Permission</th>
+					@Html.HiddenFor(o => o.Id)
+					@Html.HiddenFor(o => o.CustomerId)
+					@Html.HiddenFor(o => o.InstrumentId)
+
+					<th>Id</th>
+					<th class="type-column">Type</th>
+					<th>Brand</th>
+					<th>Model</th>
+					<th>Tune</th>
+					<th class="serial-number">SerialNumber</th>
 				</tr>
 			</thead>
 
 			<tbody>
-				@foreach (var dto in users)
+				@foreach (var dto in orders)
 				{
 					<tr>
-						<td class="col-md-4">
-							<a href="@Url.Action("UserInfo", "Home", new { id = dto.Id })">
-								@($"{dto.FirstName} {dto.LastName}")
+						<td>@dto.Id</td>
+						<td>@dto.Type</td>
+						<td>@dto.Brand</td>
+						<td>@dto.Model</td>
+						<td>@dto.Tuning</td>
+						<td>
+							<a href="@Url.Action("OrderInfo", "Home", new { id = dto.Id })">
+								@dto.SerialNumber
 							</a>
 						</td>
-
-						<td>@dto.PhoneNumber</td>
-						<td>@dto.Email</td>
-						<td>@dto.Permission</td>
 					</tr>
 				}
 			</tbody>

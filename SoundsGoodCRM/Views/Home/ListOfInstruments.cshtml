@@ -1,15 +1,22 @@
-﻿@model InstrumentListDTO
+﻿@model InstrumentDTO
 
 @{
 	ViewData["Title"] = "Instruments";
 	var instruments = Ctx.Instruments
-						.Select(i => new InstrumentListDTO(
+						.Select(i => new InstrumentDTO(
 						i.Id,
-						i.Model.Type.Type,
-						i.Model.Brand.BrandName,
+						i.Customer.Id,
+						i.Model.Type.Id,
+						i.Model.Id,
+						i.Tuning.Id,
+						i.Model.Brand.Id,
+						i.SerialNumber,
 						i.Model.ModelName,
+						i.Customer.FirstName,
+						i.Customer.LastName,
 						i.Tuning.Tune,
-						i.SerialNumber)).ToList();
+						i.Model.Type.Type,
+						i.Model.Brand.BrandName)).ToList();
 }
 
 <div class="col-md-8 card p-3 mx-auto top-margin width-min ">
@@ -21,6 +28,11 @@
 			<thead>
 				<tr>
 					@Html.HiddenFor(i =>i.Id)
+					@Html.HiddenFor(i =>i.CustomerId)
+					@Html.HiddenFor(i =>i.TypeId)
+					@Html.HiddenFor(i =>i.ModelId)
+					@Html.HiddenFor(i =>i.TuningId)
+					@Html.HiddenFor(i =>i.BrandId)
 					<th class="type-column">Type</th>
 					<th>Brand</th>
 					<th>Model</th>
@@ -47,3 +59,20 @@
 			</tbody>
 		</table>
 	</div>
+	<div id="toast-container" aria-live="polite" aria-atomic="true" class="toast-container position-fixed end-0 bottom-0 p-3" data-bs-autohide="true">
+		@if (!string.IsNullOrEmpty(TempData["ToastMessage"] as string))
+		{
+			<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header">
+					<span class="me-auto">SoundsGoodCRM</span>
+					<small class="text-muted">@DateTime.Now.ToString("HH:mm")</small>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body">
+					<span class="toast-message">@TempData["ToastMessage"]</span>
+				</div>
+			</div>
+		}
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-fnMxWrj8OpX3K9G7u9NasbWOPj+YwONSlP3NqGN2FvIpnAb3L9M2vSxYyFJcvFxzxFTop+L/uqRFv8UoUeL8cQ==" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js" integrity="sha512-jLYrY3D6EG6dDCgmoG1X+X2RvN1yplN8df/m9/VfsFLvL27Dd1C7ZciJPoRPWkxi+9/1lSo9V6UR9GMshAxN2w==" crossorigin="anonymous"></script>

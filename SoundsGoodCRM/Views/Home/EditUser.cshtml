@@ -1,29 +1,19 @@
 ﻿@model UserDTO
 
 @{
-    ViewData["Title"] = "Create User";
+    ViewData["Title"] = "Edit User";
     var permissionsList = Ctx.UserPermissions.OrderBy(u => u).ToList();
 }
 
 <div class="col-md-8 card p-3 mx-auto top-margin width-min">
-    <h2 class="slogan">Create new user</h2>
+    <h2 class="slogan">Edit user`s info</h2>
 
-    @*Alert notification if user already exists*@
-    @if (!ViewData.ModelState.IsValid)
-    {
-        <div class="alert alert-danger">
-            @foreach (var modelState in ViewData.ModelState.Values)
-            {
-                foreach (var error in modelState.Errors)
-                {
-                    <div>@error.ErrorMessage</div>
-                }
-            }
-        </div>
-    }
 
-    <form asp-action="CreateUser" method="post">
+    <form asp-action="EditUser" method="post">
         <div class="form-group row">
+            @Html.HiddenFor(u =>u.Id)
+            @Html.HiddenFor(u =>u.UserContactsId)
+            @Html.HiddenFor(u =>u.UserAuthorizationId)
             <div class="col-md-6 form-group form-margin">
                 <label asp-for="FirstName">First Name</label>
                 <input asp-for="FirstName" class="form-control" />
@@ -66,7 +56,7 @@
                 <span asp-validation-for="Permission" class="text-danger"></span>
             </div>
             <div class="col-md-12 form-group form-margin">
-                <button type="submit" class="btn btn-outline-primary button-top-margin button-margin">Create</button>
+                <button type="submit" class="btn btn-outline-primary button-top-margin button-margin">Save</button>
             </div>
         </div>
     </form>

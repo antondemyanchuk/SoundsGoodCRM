@@ -1,0 +1,65 @@
+﻿@model InstrumentDTO
+
+@{
+	ViewData["Title"] = "Add new instrument";
+}
+
+<div class="col-md-8 card p-3 mx-auto top-margin width-min ">
+	<h2 class="slogan">Add new instrument</h2>
+
+
+	<form asp-action="CreateInstrument" method="post">
+		<div class="form-group row">
+			@Html.HiddenFor(i =>i.Id)
+			@Html.HiddenFor(i =>i.CustomerId)
+			@Html.HiddenFor(i =>i.TypeId)
+			@Html.HiddenFor(i =>i.ModelId)
+			@Html.HiddenFor(i =>i.TuningId)
+			@Html.HiddenFor(i =>i.BrandId)
+			<div class="col-md-4 form-group form-margin">
+				<label asp-for="SerialNumber">Serial number</label>
+				<span asp-for="SerialNumber" class="form-control" readonly>@Model.SerialNumber</span> 
+
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="Type">Type</label>
+				<span asp-for="Type" class="form-control" readonly>@Model.Type</span>
+			</div>
+			<div class="col-md-4 form-group form-margin">
+				<label asp-for="Brand">Brand</label>
+				<span asp-for="Brand" class="form-control" readonly>@Model.Brand</span>
+			</div>
+			<div class="col-md-4 form-group form-margin">
+				<label asp-for="Tuning">Tune</label>
+				<span asp-for="Tuning" class="form-control" readonly>@Model.Tuning</span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="Model">Model</label>
+				<span asp-for="Model" class="form-control" readonly>@Model.Model</span>
+			</div>
+			<div class=" col-md-4 form-group form-margin">
+				<label asp-for="CustomerFullName">Customer</label>
+				<span asp-for="CustomerFullName" class="form-control" readonly>@($"{Model.CustomerFirstName} {Model.CustomerLastName}") </span>
+			</div>
+			<div class="col-md-12 form-group form-margin">
+				<a class="btn btn-outline-primary col-md-2 button-margin" asp-controller="Home" asp-action="EditInstrument" asp-route-id="@Model.Id">Edit</a>
+			</div>
+	</form>
+</div>
+<div id="toast-container" aria-live="polite" aria-atomic="true" class="toast-container position-fixed end-0 bottom-0 p-3" data-bs-autohide="true">
+	@if (!string.IsNullOrEmpty(TempData["ToastMessage"] as string))
+	{
+		<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+			<div class="toast-header">
+				<span class="me-auto">SoundsGoodCRM</span>
+				<small class="text-muted">@DateTime.Now.ToString("HH:mm")</small>
+				<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+			</div>
+			<div class="toast-body">
+				<span class="toast-message">@TempData["ToastMessage"]</span>
+			</div>
+		</div>
+	}
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-fnMxWrj8OpX3K9G7u9NasbWOPj+YwONSlP3NqGN2FvIpnAb3L9M2vSxYyFJcvFxzxFTop+L/uqRFv8UoUeL8cQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js" integrity="sha512-jLYrY3D6EG6dDCgmoG1X+X2RvN1yplN8df/m9/VfsFLvL27Dd1C7ZciJPoRPWkxi+9/1lSo9V6UR9GMshAxN2w==" crossorigin="anonymous"></script>

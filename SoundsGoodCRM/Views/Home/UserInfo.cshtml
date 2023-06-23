@@ -10,6 +10,9 @@
 
 	<form asp-action="CreateUser" method="post">
 		<div class="form-group row">
+			@Html.HiddenFor(u =>u.Id)
+			@Html.HiddenFor(u =>u.UserContactsId)
+			@Html.HiddenFor(u =>u.UserAuthorizationId)
 			<div class="col-md-4 form-group form-margin">
 				<label asp-for="FirstName">First Name</label>
 				<span class="form-control" readonly>@Model.FirstName</span>

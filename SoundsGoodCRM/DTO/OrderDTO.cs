@@ -1,25 +1,46 @@
-﻿namespace SoundsGoodCRM.DTO
-{
-    public record OrderDto
-    {
-        public int Id { get; }
-        public string SerialNumber { get; }
-        public string Model { get; }
-        public string Type { get; }
-        public string Brand { get; }
-        public string CustomerName { get; }
-        public string Status { get; }
+﻿using System.ComponentModel.DataAnnotations;
 
-        public OrderDto(int id, string serialNumber, string model, string type, string brand, string customerName, string status)
-        {
-            Id = id;
-            SerialNumber = serialNumber;
-            Model = model;
-            Type = type;
-            Brand = brand;
-            CustomerName = customerName;
-            Status = status;
-        }
-    }
+namespace SoundsGoodCRM.DTO
+{
+	public record OrderDto
+	{
+		public int Id { get; }
+		public int CustomerId { get; set; }
+		public int InstrumentId { get; set; }
+		[Required(ErrorMessage = "Serial number is required.")]
+		public string SerialNumber { get; set; }
+		[Required(ErrorMessage = "Type is required.")]
+		public string Type { get; set; }
+		[Required(ErrorMessage = "Brand is required.")]
+		public string Brand { get; set; }
+		[Required(ErrorMessage = "Model is required.")]
+		public string Model { get; set; }
+		[Required(ErrorMessage = "Tuning is required.")]
+		public string Tuning { get; set; }
+		[Required(ErrorMessage = "Customer name is required.")]
+		public string CustomerName { get; set; }
+		[Required(ErrorMessage = "Phone number is required.")]
+		public string CustomerPhone { get; set; }
+
+		[Required(ErrorMessage = "Description is required.")]
+		public string Description { get; set; }
+		public OrderDto() { }
+
+		public OrderDto(int id,int customerId, int instrumentId, string serialNumber, string type, string brand, string model, 
+			string tuning,string customerName, string customerPhone, string description)
+		{
+			Id = id;
+			CustomerId = customerId;
+			InstrumentId = instrumentId;
+			SerialNumber = serialNumber;
+			Model = model;
+			Type = type;
+			Brand = brand;
+			Tuning = tuning;
+			CustomerName = customerName;
+			CustomerPhone = customerPhone;
+			Description = description;
+		}
+	}
 }
 
