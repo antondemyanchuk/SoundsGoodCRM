@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.Application", "src\SoundsGoodCRM.Application\SoundsGoodCRM.Application.csproj", "{05D02985-659A-4986-976F-DDA787B09349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodSRM.Core", "src\SoundsGoodSRM.Core\SoundsGoodSRM.Core.csproj", "{39CA8C3C-5FCD-480E-9C8F-21A542F9F8D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Infrastructure", "src\SoundsGoodCRM.Infrastructure\SoundsGoodCRM.Infrastructure.csproj", "{566505F7-AF82-4C1A-AC9D-803B9CAA7C3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Shared", "src\SoundsGoodCRM.Shared\SoundsGoodCRM.Shared.csproj", "{3727039C-A6F7-4F19-B156-0FD9D99A85EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.WebUI", "src\SoundsGoodCRM.WebUI\SoundsGoodCRM.WebUI.csproj", "{9BF9AE2F-6DE7-4F63-8866-EDC3A7680DA3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05D02985-659A-4986-976F-DDA787B09349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05D02985-659A-4986-976F-DDA787B09349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05D02985-659A-4986-976F-DDA787B09349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05D02985-659A-4986-976F-DDA787B09349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39CA8C3C-5FCD-480E-9C8F-21A542F9F8D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39CA8C3C-5FCD-480E-9C8F-21A542F9F8D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39CA8C3C-5FCD-480E-9C8F-21A542F9F8D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39CA8C3C-5FCD-480E-9C8F-21A542F9F8D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{566505F7-AF82-4C1A-AC9D-803B9CAA7C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{566505F7-AF82-4C1A-AC9D-803B9CAA7C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{566505F7-AF82-4C1A-AC9D-803B9CAA7C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{566505F7-AF82-4C1A-AC9D-803B9CAA7C3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3727039C-A6F7-4F19-B156-0FD9D99A85EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3727039C-A6F7-4F19-B156-0FD9D99A85EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3727039C-A6F7-4F19-B156-0FD9D99A85EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3727039C-A6F7-4F19-B156-0FD9D99A85EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BF9AE2F-6DE7-4F63-8866-EDC3A7680DA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BF9AE2F-6DE7-4F63-8866-EDC3A7680DA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BF9AE2F-6DE7-4F63-8866-EDC3A7680DA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BF9AE2F-6DE7-4F63-8866-EDC3A7680DA3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BD9D410-895A-4581-8BBB-9BD0F828D9B0}
+	EndGlobalSection
+EndGlobal
