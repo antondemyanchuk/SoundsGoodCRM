@@ -1,4 +1,4 @@
-﻿namespace SoundsGoodCRM.DAO.OrderModels
+﻿namespace SoundsGoodCRM.Core.Models.OrderModels
 {
     public class OrderStatusTimeLog
     {

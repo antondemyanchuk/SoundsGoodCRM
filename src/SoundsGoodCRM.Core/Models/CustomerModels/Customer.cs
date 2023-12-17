@@ -1,5 +1,5 @@
 ﻿using SoundsGoodCRM.DAO.CustomerModels;
-using SoundsGoodCRM.DAO.OrderModels;
+using SoundsGoodCRM.Core.Models.OrderModels;
 using System.Diagnostics.Metrics;
 
 
