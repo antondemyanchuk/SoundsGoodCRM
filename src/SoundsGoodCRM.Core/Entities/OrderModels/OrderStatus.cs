@@ -1,4 +1,4 @@
-﻿namespace SoundsGoodCRM.Core.Models.OrderModels
+﻿namespace SoundsGoodCRM.Core.Entities.Orders
 {
     public class OrderStatus : EntityWithId
     {

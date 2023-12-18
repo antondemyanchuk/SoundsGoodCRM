@@ -1,17 +1,17 @@
-﻿namespace SoundsGoodCRM.DAO.UserModels
+﻿namespace SoundsGoodCRM.Entities.Employees
 {
-    public class User : EntityWithId
+    public class Employee : EntityWithId
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int UserContactsId { get; set; }
         public int UserPermissionsId { get; set; }
         public int UserAuthorizationId { get; set; }
-        public UserContact UserContact { get; set; }
+        public EmployeeContact UserContact { get; set; }
         public UserPermission UserPermission { get; set; }
-        public UserAuthorization UserAuthorization { get; set; }
-        public User() { }
-        public User(int id, string firstName, string lastName, int userContactsId, int userPermissionsId, int userAuthorizationId)
+        public EmployeeAuthorization UserAuthorization { get; set; }
+        public Employee() { }
+        public Employee(int id, string firstName, string lastName, int userContactsId, int userPermissionsId, int userAuthorizationId)
         {
             Id = id;
             FirstName = firstName;

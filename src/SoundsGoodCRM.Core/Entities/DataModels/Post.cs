@@ -1,9 +1,8 @@
-﻿using SoundsGoodCRM.Core.Models;
-using SoundsGoodCRM.Core.Models.Customer;
+﻿using SoundsGoodCRM.Core.Entities.Customers;
 
-namespace SoundsGoodCRM.DAO.CustomerModels
+namespace SoundsGoodCRM.Core.Entities.DataModels
 {
-    public class CustomerPostInfo : EntityWithId
+    public class Post : EntityWithId
     {
         public string PostProvider { get; set; }
         public string City { get; set; }

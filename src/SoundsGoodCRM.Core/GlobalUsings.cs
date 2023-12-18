@@ -1,1 +1,1 @@
-﻿global using SoundsGoodCRM.Core.Models;
+﻿global using SoundsGoodCRM.Core.Entities;
