@@ -14,15 +14,8 @@ namespace SoundsGoodCRM.Core.Entities.Customers
 
         public Contact Contact { get; set; }
         public Post Post { get; set; }
-        public CustomerAuthorization CustomerAuthorization { get; set; }
         public List<Instrument> Instruments { get; set; }
         public List<Order> Orders { get; set; }
-        public Customer() { }
-        public Customer(string firstName, string lastName, int contactId)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            ContactId = contactId;
-        }
+        public CustomerAuthorization CustomerAuthorization { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace SoundsGoodCRM.Entities.Employees
 {
-    public class UserPermission : EntityWithId
+    public class EmployeePermission : EntityWithId
     {
-        public string Permission { get; set; }
+        public string PermissionName { get; set; }
         public List<Employee> Employees { get; set; }
     }
 }

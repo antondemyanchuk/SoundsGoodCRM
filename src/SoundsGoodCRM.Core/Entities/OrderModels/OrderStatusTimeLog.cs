@@ -2,11 +2,11 @@
 {
     public class OrderStatusTimeLog
     {
+        public DateTime DateTime { get; set; }
+        public int OrderStatusId { get; set; }
         public int OrderId { get; set; }
-        public int StatusId { get; set; }
-        public Order Order { get; set; }
         public OrderStatus OrderStatus { get; set; }
-        public string DateTimeStatusSet { get; set; }
+        public Order Order { get; set; }
 
     }
 }
