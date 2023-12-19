@@ -6,6 +6,11 @@ Its primary objectives include advertising the workshop's services, simplifying 
 creating new orders, monitoring their progress and payment, storing a database of clients and their musical instruments, 
 as well as maintaining a history of customer interactions.
 
+Data Base:
+Data Base Scheme:
+![Database ER diagram SoundsGoodCRM](https://github.com/antondemyanchuk/SoundsGoodCRM/assets/44449892/cc7f2996-14ef-47bf-b7d0-6e4d0ecc9add)
+
+
 Homepage: Information about the workshop's services, contacts, promotions, and special offers for clients. 
 There is also the option to pay for an order using the order number and the option to submit a request for feedback by filling out a form, 
 with full name, contact phone number, and a brief description of the reason for the inquiry or the issue with the musical instrument. 
