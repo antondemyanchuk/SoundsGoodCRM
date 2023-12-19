@@ -8,7 +8,8 @@ as well as maintaining a history of customer interactions.
 
 Data Base:
 Data Base Scheme:
-![Database ER diagram SoundsGoodCRM](https://github.com/antondemyanchuk/SoundsGoodCRM/assets/44449892/2631d79d-ef0e-4d8c-bf0c-82409f52831f)
+![Database ER diagram SoundsGoodCRM](https://github.com/antondemyanchuk/SoundsGoodCRM/assets/44449892/cc7f2996-14ef-47bf-b7d0-6e4d0ecc9add)
+
 
 Homepage: Information about the workshop's services, contacts, promotions, and special offers for clients. 
 There is also the option to pay for an order using the order number and the option to submit a request for feedback by filling out a form, 
