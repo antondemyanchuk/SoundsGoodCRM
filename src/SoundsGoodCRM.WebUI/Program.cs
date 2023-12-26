@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Identity.Client;
+using SoundsGoodCRM.Core;
 
 namespace SoundsGoodCRM 
 {
@@ -11,6 +15,9 @@ namespace SoundsGoodCRM
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<SampleContext>(o => o.UseSqlServer(builder.Configuration
+                .GetConnectionString("DefaulConnection")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();

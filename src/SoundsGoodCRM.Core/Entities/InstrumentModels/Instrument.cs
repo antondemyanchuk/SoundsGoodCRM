@@ -19,14 +19,5 @@ namespace SoundsGoodCRM.Core.Entities.Instruments
         public Customer Customer { get; set; }
         public List<Order> Orders { get; set; }
 
-        public Instrument(int customerId, string serialNumber, int instrumentTuneId, int instrumentTypeId, int instrumentBrandId, int instrumentModelId)
-        {
-            CustomerId = customerId;
-            SerialNumber = serialNumber;
-            InstrumentTuneId = instrumentTuneId;
-            InstrumentTypeId = instrumentTypeId;
-            InstrumentBrandId = instrumentBrandId;
-            InstrumentModelId = instrumentModelId;
-        }
     }
 }

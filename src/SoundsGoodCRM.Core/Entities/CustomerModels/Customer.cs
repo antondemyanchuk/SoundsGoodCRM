@@ -10,7 +10,7 @@ namespace SoundsGoodCRM.Core.Entities.Customers
         public string LastName { get; set; }
         public int ContactId { get; set; }
         public int PostId { get; set; }
-        public string CustomerAuthorizationId { get; set; }
+        public int CustomerAuthorizationId { get; set; }
 
         public Contact Contact { get; set; }
         public Post Post { get; set; }

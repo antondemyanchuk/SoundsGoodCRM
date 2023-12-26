@@ -13,15 +13,15 @@ namespace SoundsGoodCRM.Core.Entities.Orders
 		public DateTime ComplitedAt { get; set; }
 		public int OrderStatusId { get; set; }
 		public string Description { get; set; }
-		public decimal TotalAmount { get; set; }
-		public int OrderTaskId { get; set; }
+		public string TotalAmount { get; set; }
 		public int EmployeeId { get; set; }
-
+		public List<int> OrderTaskId { get; set; }
+		public List<OrderTask> OrderTasks { get; set; }
 		public Customer Customer { get; set; }
 		public Instrument Instrument { get; set; }
 		public List<OrderStatus> OrderStatuses { get; set; }
-		public List<OrderTask> OrderTasks { get; set; }
 		public Employee Employee { get; set; }
 		public List<OrderStatusTimeLog> OrderStatusTimeLogs { get; set; }
+		public Order()=>CreatedAt=DateTime.Now;
 	}
 }

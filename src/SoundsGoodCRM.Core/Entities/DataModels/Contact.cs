@@ -13,18 +13,5 @@ namespace SoundsGoodCRM.Core.Entities.DataModels
         public Employee Employee { get; set; }
 
         public Contact() { }
-        public Contact(int id, string phoneNumber, string email)
-        {
-            Id = id;
-            PhoneNumberPrimary = phoneNumber;
-            Email = email;
-        }
-        public Contact(int id, string phoneNumber, string phoneNumberSecondary, string email)
-        {
-            Id = id;
-            PhoneNumberPrimary = phoneNumber;
-            PhoneNumberSecondary = phoneNumberSecondary;
-            Email = email;
-        }
     }
 }

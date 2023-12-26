@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Core", "src\SoundsGoodCRM.Core\SoundsGoodCRM.Core.csproj", "{8E8E0C0B-87DB-4C42-94B4-B132B0B8BA06}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.Core", "src\SoundsGoodCRM.Core\SoundsGoodCRM.Core.csproj", "{8E8E0C0B-87DB-4C42-94B4-B132B0B8BA06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Application", "src\SoundsGoodCRM.Application\SoundsGoodCRM.Application.csproj", "{ADDEBA7E-D510-4F1F-8166-28AA80194987}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.Application", "src\SoundsGoodCRM.Application\SoundsGoodCRM.Application.csproj", "{ADDEBA7E-D510-4F1F-8166-28AA80194987}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Infrastructure", "src\SoundsGoodCRM.Infrastructure\SoundsGoodCRM.Infrastructure.csproj", "{F3EC7A65-7696-4AD4-8291-EB20BDC8E351}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.Infrastructure", "src\SoundsGoodCRM.Infrastructure\SoundsGoodCRM.Infrastructure.csproj", "{F3EC7A65-7696-4AD4-8291-EB20BDC8E351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Shared", "src\SoundsGoodCRM.Shared\SoundsGoodCRM.Shared.csproj", "{2BF63227-8590-44BC-97D6-0DAC8E9CC8B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.Shared", "src\SoundsGoodCRM.Shared\SoundsGoodCRM.Shared.csproj", "{2BF63227-8590-44BC-97D6-0DAC8E9CC8B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.WebUI", "src\SoundsGoodCRM.WebUI\SoundsGoodCRM.WebUI.csproj", "{8DCAF9D2-A934-4F59-9A9E-5791C57E341A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoundsGoodCRM.WebUI", "src\SoundsGoodCRM.WebUI\SoundsGoodCRM.WebUI.csproj", "{8DCAF9D2-A934-4F59-9A9E-5791C57E341A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Tests", "src\SoundsGoodCRM.Tests\SoundsGoodCRM.Tests.csproj", "{3BD0CB14-7D81-41B0-BCA8-D8DB05526989}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoundsGoodCRM.Tests", "src\SoundsGoodCRM.Tests\SoundsGoodCRM.Tests.csproj", "{92831964-C840-4C2F-8EEB-B23B771323B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{8DCAF9D2-A934-4F59-9A9E-5791C57E341A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DCAF9D2-A934-4F59-9A9E-5791C57E341A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DCAF9D2-A934-4F59-9A9E-5791C57E341A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BD0CB14-7D81-41B0-BCA8-D8DB05526989}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BD0CB14-7D81-41B0-BCA8-D8DB05526989}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BD0CB14-7D81-41B0-BCA8-D8DB05526989}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BD0CB14-7D81-41B0-BCA8-D8DB05526989}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92831964-C840-4C2F-8EEB-B23B771323B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92831964-C840-4C2F-8EEB-B23B771323B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92831964-C840-4C2F-8EEB-B23B771323B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92831964-C840-4C2F-8EEB-B23B771323B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
