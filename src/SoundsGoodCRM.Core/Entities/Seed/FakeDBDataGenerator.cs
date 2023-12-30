@@ -3,6 +3,7 @@ using SoundsGoodCRM.Core.Entities.Customers;
 using SoundsGoodCRM.Core.Entities.DataModels;
 using SoundsGoodCRM.Core.Entities.Instruments;
 using SoundsGoodCRM.Core.Entities.Orders;
+using SoundsGoodCRM.Core.Entities.Seed.FakeEntitieCreators;
 using SoundsGoodCRM.Entities.Employees;
 
 namespace SoundsGoodCRM.Core.Entities.Seed
@@ -41,12 +42,7 @@ namespace SoundsGoodCRM.Core.Entities.Seed
                 throw new ArgumentOutOfRangeException();
             }
 
-            string[] postProvider = ["Nova Poshta", "UkrPoshta", "Meest", "Delivery"];
-            string[] city = ["Kiev", "Dnipro", "Lviv", "Chernigiv", "Cherkassy", "Symu", "Rivne", "Lutsk", "Ternopil", "Chernivtsi", "Odesa", "Kropivnitski", "Zytomir"];
-            string[] instrumentTunes = ["in C", "in D", "in Es", "in F", "in G", "in A", "in B"];
-            string[] instrumentTypes = ["Flute", "Oboe", "Clarinet", "Bassoon", "Saxophone", "Trumpet", "Trombone", "Tuba", "French Horn"];
-            string[] instrumentBrands = ["Selmer", "Buffet", "Muramatsu", "Yanagisawa", "Miazawa", "Yamaha", "Alexander", "Bach", "Holton", "SML", "Noblet"];
-            string[] instrumentModels = ["Prestige", "Festival", "56", "112", "Signature", "Privilege", "901", "2001", "2016", "910", "Artist", "II", "III", "Mark VI", "Mark VII"];
+            var fakeInstrumentSpecification = new FakeInstrumentsSpecification();
             string[] orderStatuses = ["Received", "On diagnostic", "Pending", "Waiting for repair parts", "Canceled", "Done", "Ready for sending", "Send"];
             string[] orderTasks = ["Soldering",
                 "Repadding",
@@ -65,57 +61,22 @@ namespace SoundsGoodCRM.Core.Entities.Seed
             for (int i = 0; i < count; i++)
             {
 
-                var customer = new Customer
-                {
-                    Id = i + 1,
-                    FirstName = faker.Name.FirstName(),
-                    LastName = faker.Name.LastName(),
-                    ContactId = i + 1,
-                    PostId = firstRandomNumbersArray[i],
-                    CustomerAuthorizationId = i + 1
-                };
-                FakeCustomers.Add(customer);
+                var fakeCustomer = new FakeCustomer(i,faker, firstRandomNumbersArray);
+                FakeCustomers.Add(fakeCustomer);
 
-                var contact = new Contact
-                {
-                    Id = i + 1,
-                    PhoneNumberPrimary = faker.Phone.PhoneNumber("+380 ## ### ## ##"),
-                    PhoneNumberSecondary = faker.Phone.PhoneNumber("+380 ## ### ## ##"),
-                    Email = faker.Internet.Email(customer.FirstName, customer.LastName)
-                };
-                FakeContacts.Add(contact);
+                var fakeContact = new FakeContact(i, faker, fakeCustomer);
+                FakeContacts.Add(fakeContact);
 
-                var customerAuthorization = new CustomerAuthorization
-                {
-                    Id = i + 1,
-                    Login = contact.Email,
-                    //TODO: Add hashing to the password
-                    PasswordHash = faker.Internet.Password()
-                };
-                FakeCustomerAuthorisation.Add(customerAuthorization);
+                var fakeCustomerAuthorization = new FakeCustomerAuthorization(i, fakeContact, faker);
+                FakeCustomerAuthorisation.Add(fakeCustomerAuthorization);
 
-                var post = new Post
-                {
-                    Id = i + 1,
-                    PostProvider = postProvider[faker.Random.Number(0, postProvider.Length - 1)],
-                    City = city[faker.Random.Number(0, city.Length - 1)],
-                    PostCentreId = faker.Random.Number(1, 300)
-                };
-                FakePosts.Add(post);
+                var fakePost = new FakePost(i, faker);
+                FakePosts.Add(fakePost);
 
-                var instrument = new Instrument
-                {
-                    Id = i + 1,
-                    CustomerId = secondRandomNumbersArray[i],
-                    SerialNumber = faker.Random.AlphaNumeric(7),
-                    InstrumentTuneId = faker.Random.Number(1, instrumentTunes.Length),
-                    InstrumentTypeId = faker.Random.Number(1, instrumentTypes.Length),
-                    InstrumentBrandId = faker.Random.Number(1, instrumentBrands.Length),
-                    InstrumentModelId = faker.Random.Number(1, instrumentModels.Length)
-                };
-                FakeInstruments.Add(instrument);
+                var fakeInstrument = new FakeInstrument(i, faker, secondRandomNumbersArray, fakeInstrumentSpecification);
+                FakeInstruments.Add(fakeInstrument);
 
-                if (i < instrumentBrands.Length)
+                if (i < fakeInstrumentSpecification.instrumentBrands.Length)
                 {
                     var instrumentBrand = new InstrumentBrand
                     {
