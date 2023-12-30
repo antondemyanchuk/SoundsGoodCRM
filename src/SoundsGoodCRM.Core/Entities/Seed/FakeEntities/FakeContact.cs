@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using SoundsGoodCRM.Core.Entities.DataModels;
 
-namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntitieCreators
+namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
     internal sealed class FakeContact:Contact
     {

@@ -1,10 +1,8 @@
-﻿
-
-using Bogus;
+﻿using Bogus;
 using Bogus.DataSets;
 using SoundsGoodCRM.Core.Entities.Instruments;
 
-namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntitieCreators
+namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
     internal sealed class FakeInstrument : Instrument
     {

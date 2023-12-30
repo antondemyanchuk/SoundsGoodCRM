@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntitieCreators
+namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
     public struct FakeInstrumentsSpecification
     {

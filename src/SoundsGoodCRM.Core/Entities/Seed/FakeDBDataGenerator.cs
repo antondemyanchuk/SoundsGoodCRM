@@ -3,18 +3,18 @@ using SoundsGoodCRM.Core.Entities.Customers;
 using SoundsGoodCRM.Core.Entities.DataModels;
 using SoundsGoodCRM.Core.Entities.Instruments;
 using SoundsGoodCRM.Core.Entities.Orders;
-using SoundsGoodCRM.Core.Entities.Seed.FakeEntitieCreators;
+using SoundsGoodCRM.Core.Entities.Seed.FakeEntities;
 using SoundsGoodCRM.Entities.Employees;
 
 namespace SoundsGoodCRM.Core.Entities.Seed
 {
     internal class FakeDBDataGenerator
     {
-        public List<Customer> FakeCustomers { get; set; }
-        public List<CustomerAuthorization> FakeCustomerAuthorisation { get; set; }
-        public List<Contact> FakeContacts { get; set; }
-        public List<Post> FakePosts { get; set; }
-        public List<Instrument> FakeInstruments { get; set; }
+        public List<Customer> Customers { get; set; }
+        public List<CustomerAuthorization> CustomerAuthorisation { get; set; }
+        public List<Contact> Contacts { get; set; }
+        public List<Post> Posts { get; set; }
+        public List<Instrument> Instruments { get; set; }
         public List<InstrumentBrand> InstrumentBrands { get; set; }
         public List<InstrumentModel> InstrumentModels { get; set; }
         public List<InstrumentTune> InstrumentTunes { get; set; }
@@ -28,9 +28,9 @@ namespace SoundsGoodCRM.Core.Entities.Seed
         public List<EmployeePermission> EmployeePermissions { get; set; }
 
 
-        public FakeDBDataGenerator(int count)
+        public FakeDBDataGenerator(int count, int employeeCounter)
         {
-
+            GenerateFakeData(count, employeeCounter, new Faker());
         }
 
 
@@ -62,42 +62,34 @@ namespace SoundsGoodCRM.Core.Entities.Seed
             {
 
                 var fakeCustomer = new FakeCustomer(i,faker, firstRandomNumbersArray);
-                FakeCustomers.Add(fakeCustomer);
+                Customers.Add(fakeCustomer);
 
                 var fakeContact = new FakeContact(i, faker, fakeCustomer);
-                FakeContacts.Add(fakeContact);
+                Contacts.Add(fakeContact);
 
                 var fakeCustomerAuthorization = new FakeCustomerAuthorization(i, fakeContact, faker);
-                FakeCustomerAuthorisation.Add(fakeCustomerAuthorization);
+                CustomerAuthorisation.Add(fakeCustomerAuthorization);
 
                 var fakePost = new FakePost(i, faker);
-                FakePosts.Add(fakePost);
+                Posts.Add(fakePost);
 
                 var fakeInstrument = new FakeInstrument(i, faker, secondRandomNumbersArray, fakeInstrumentSpecification);
-                FakeInstruments.Add(fakeInstrument);
+                Instruments.Add(fakeInstrument);
 
                 if (i < fakeInstrumentSpecification.instrumentBrands.Length)
                 {
-                    var instrumentBrand = new InstrumentBrand
-                    {
-                        Id = i + 1,
-                        BrandName = instrumentBrands[i]
-                    };
-                    InstrumentBrands.Add(instrumentBrand);
+                    var fakeInstrumentBrand = new FakeInstrumentBrand(i, fakeInstrumentSpecification);
+                    InstrumentBrands.Add(fakeInstrumentBrand);
                 }
 
-                if (i < instrumentModels.Length)
+                if (i < fakeInstrumentSpecification.instrumentModels.Length)
                 {
 
-                    var instrumentModel = new InstrumentModel
-                    {
-                        Id = i + 1,
-                        ModelName = instrumentModels[i]
-                    };
-                    InstrumentModels.Add(instrumentModel);
+                    var fakeInstrumentModel = new FakeInstrumentModel(i, fakeInstrumentSpecification);
+                    InstrumentModels.Add(fakeInstrumentModel);
                 }
 
-                if (i < instrumentTunes.Length)
+                if (i < fakeInstrumentSpecification.instrumentTunes.Length)
                 {
                     var instrumentTune = new InstrumentTune
                     {
@@ -107,7 +99,7 @@ namespace SoundsGoodCRM.Core.Entities.Seed
                     InstrumentTunes.Add(instrumentTune);
                 }
 
-                if (i < instrumentTypes.Length)
+                if (i < fakeInstrumentSpecification.instrumentTypes.Length)
                 {
                     var instrumentType = new InstrumentType
                     {
