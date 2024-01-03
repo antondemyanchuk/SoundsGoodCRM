@@ -12,8 +12,8 @@ namespace SoundsGoodCRM.Core.Entities.Seed
 {
     internal class FakeDBDataGenerator
     {
-        private int _quantity = 5;
-        private int _employeCounter = 5;
+        private readonly int _quantity = 5;
+        private readonly int _employeCounter = 5;
 
         public List<Customer> Customers { get; set; }
         public List<CustomerAuthorization> CustomerAuthorization { get; set; }
