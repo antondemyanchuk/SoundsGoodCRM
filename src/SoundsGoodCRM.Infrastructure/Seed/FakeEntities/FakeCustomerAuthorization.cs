@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using SoundsGoodCRM.Core.Entities.Customers;
+using SoundsGoodCRM.Core.Services;
 
 namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
@@ -9,8 +10,7 @@ namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
         {
             Id = index + 1;
             Login = fakeContact.Email;
-            //TODO: Add hashing to the password
-            PasswordHash = faker.Internet.Password();
+            PasswordHash = faker.Internet.Password().HashPassword();
         }
     }
 }
