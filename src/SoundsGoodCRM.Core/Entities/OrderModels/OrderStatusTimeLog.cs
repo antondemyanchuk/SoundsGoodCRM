@@ -1,6 +1,6 @@
 ﻿namespace SoundsGoodCRM.Core.Entities.Orders
 {
-    public class OrderStatusTimeLog
+    public class OrderStatusTimeLog 
     {
         public DateTime DateTime { get; set; }
         public int OrderStatusId { get; set; }

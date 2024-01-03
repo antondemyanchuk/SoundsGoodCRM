@@ -1,12 +1,13 @@
 ﻿using Bogus;
 using Bogus.DataSets;
 using SoundsGoodCRM.Core.Entities.Instruments;
+using SoundsGoodCRM.Core.Entities.Seed.FakeEntities.AdditionalFakeData;
 
 namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
     internal sealed class FakeInstrument : Instrument
     {
-        internal FakeInstrument(int index, Faker faker, int[] randomNumbersArray, FakeInstrumentsSpecification fakeInstrumentsSpecification)
+        internal FakeInstrument(int index, Faker faker, int[] randomNumbersArray, FakeInstrumentSpecification fakeInstrumentsSpecification)
         {
             Id = index + 1;
             CustomerId = randomNumbersArray[index];

@@ -20,12 +20,10 @@ namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
             City = _city[faker.Random.Number(0, _city.Length - 1)];
             PostCentreId = faker.Random.Number(1, 300);
         }
-        internal FakePost(int index, Faker faker, string[] postProvider, string[] city)
+        internal FakePost(int index, Faker faker, string[] postProvider, string[] city):this(index,faker)
         {
-            Id = index + 1;
-            PostProvider = postProvider[faker.Random.Number(0, postProvider.Length - 1)];
-            City = city[faker.Random.Number(0, city.Length - 1)];
-            PostCentreId = faker.Random.Number(1, 300);
+            _postProvider = postProvider;
+            _city = city;
         }
     }
 }

@@ -15,4 +15,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SoundsGoodCRM.Shared\SoundsGoodCRM.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

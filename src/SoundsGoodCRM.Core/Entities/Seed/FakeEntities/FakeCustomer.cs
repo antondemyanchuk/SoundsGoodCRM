@@ -1,9 +1,10 @@
 ﻿using Bogus;
 using SoundsGoodCRM.Core.Entities.Customers;
+using SoundsGoodCRM.Shared.Interfaces.EntitieInterfaces;
 
 namespace SoundsGoodCRM.Core.Entities.Seed.FakeEntities
 {
-    internal sealed class FakeCustomer : Customer
+    internal sealed class FakeCustomer : Customer,IContactable
     {
         internal FakeCustomer(int index, Faker faker, int[] randomNumbersArray)
         {
